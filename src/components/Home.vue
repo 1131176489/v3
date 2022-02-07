@@ -1,12 +1,17 @@
 <template>
     <div>
-        Home组件哦耶
+        <el-button type="info" v-on:click="logout">退出登录</el-button>
     </div>
 </template>
 
 <script>
 export default {
-
+  methods: {
+    logout () {
+      window.sessionStorage.clear()
+      this.$router.push('/login')
+    }
+  }
 }
 </script>
 
