@@ -22,7 +22,7 @@
           :collapse="isCollapse"
           :collapse-transition="false"
           :router="true"
-          default-active='/users'
+          :default-active='activePath'
         >
         <!-- 一级菜单 -->
           <el-submenu :index="item.id+''" v-for="item in menulist" v-bind:key="item.id">
@@ -33,8 +33,8 @@
               <!-- 文本 -->
               <span>{{item.authName}}</span>
             </template>
-            <el-menu-item :index="'/'+subItem.path+''" v-for="subItem in item.children"
-            :key="subItem.id">
+            <el-menu-item :index="'/'+subItem.path" v-for="subItem in item.children"
+            :key="subItem.id" @click="saveNavState('/'+subItem.path)">
                 <template slot="title">
                 <!-- 图标 -->
                 <i class="el-icon-menu"></i>
@@ -65,11 +65,13 @@ export default {
         102: 'icon-file-text',
         145: 'icon-stats-bars'
       },
-      isCollapse: false
+      isCollapse: false,
+      activePath: ''
     }
   },
   created () {
     this.getMenuList()
+    this.activePath = window.sessionStorage.getItem('activePath')
   },
   methods: {
     logout () {
@@ -84,6 +86,10 @@ export default {
     },
     toggleCollapse () {
       this.isCollapse = !this.isCollapse
+    },
+    saveNavState (activePath) {
+      window.sessionStorage.setItem('activePath', activePath)
+      this.activePath = activePath
     }
   }
 }
