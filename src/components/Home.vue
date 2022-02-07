@@ -21,6 +21,7 @@
           :unique-opened="false"
           :collapse="isCollapse"
           :collapse-transition="false"
+          :router="true"
         >
         <!-- 一级菜单 -->
           <el-submenu :index="item.id+''" v-for="item in menulist" v-bind:key="item.id">
@@ -31,7 +32,7 @@
               <!-- 文本 -->
               <span>{{item.authName}}</span>
             </template>
-            <el-menu-item :index="subItem.id+''" v-for="subItem in item.children"
+            <el-menu-item :index="'/'+subItem.path+''" v-for="subItem in item.children"
             :key="subItem.id">
                 <template slot="title">
                 <!-- 图标 -->
@@ -44,7 +45,9 @@
         </el-menu>
       </el-aside>
       <!-- 右侧内容主体 -->
-      <el-main>Main</el-main>
+      <el-main>
+          <router-view></router-view>
+      </el-main>
     </el-container>
   </el-container>
 </template>
