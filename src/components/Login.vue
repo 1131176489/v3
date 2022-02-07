@@ -45,8 +45,8 @@ export default {
     return {
     // 登录表单的数据绑定对象
       loginForm: {
-        username: 'zs',
-        password: '123'
+        username: 'admin',
+        password: '123456'
       },
       // 这是表单验证规则对象
       loginFormRules: {
@@ -73,9 +73,11 @@ export default {
         if (!valid) return
         const { data: res } = await this.$http.post('login', this.loginForm)
         if (res.meta.status !== 200) {
-          return console.log('登陆失败')
+          return this.$message.error('登陆失败')
         }
-        console.log('登陆成功')
+        this.$message.success('登陆成功')
+        window.sessionStorage.setItem('token', res.data.token)
+        this.$router.push('/home')
       })
     }
   }
