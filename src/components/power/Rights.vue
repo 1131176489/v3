@@ -8,6 +8,7 @@
         </el-breadcrumb>
         <!-- 卡片区域 -->
         <el-card class="box-card">
+            <!-- 表格区域 -->
             <el-table
                 :data="rightsList"
                 border
