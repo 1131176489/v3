@@ -96,6 +96,7 @@ export default {
 </script>
 
 <style lang='less' scoped>
+// @color: pink;
 .home-container {
   height: 100%;
 }
@@ -106,7 +107,7 @@ export default {
   align-items: center;
   color: #fff;
   font-size: 20px;
-  > div {
+  div {
     display: flex;
     align-items: center;
     span {
