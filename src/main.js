@@ -8,8 +8,10 @@ import 'element-ui/lib/theme-chalk/index.css'
 import './assets/css/global.css'
 // 导入字体图标
 import './assets/icomoon/style.css'
-
 import axios from 'axios'
+import TreeTable from 'vue-table-with-tree-grid'
+import treeMenus from './components/goods/Mu.vue'
+
 // 配置请求的路径
 axios.defaults.baseURL = 'https://lianghj.top:8888/api/private/v1/'
 Vue.prototype.$http = axios
@@ -22,7 +24,8 @@ axios.interceptors.request.use((config) => {
 Vue.config.productionTip = false
 
 Vue.use(ElementUI)
-
+Vue.component(treeMenus.name, treeMenus)
+Vue.component('tree-table', TreeTable)
 new Vue({
   router,
   render: h => h(App)
