@@ -72,7 +72,6 @@
                     v-model="selectedKeys"
                     :options="parentCateList"
                     clearable
-                    change-on-select
                     :props="cascaderProps"
                     @change="parentCateChange"
                   >
@@ -148,7 +147,8 @@ export default {
       cascaderProps: {
         value: 'cat_id',
         label: 'cat_name',
-        children: 'children'
+        children: 'children',
+        checkStrictly: true
       },
       selectedKeys: []
     }
