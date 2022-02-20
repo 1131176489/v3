@@ -40,7 +40,7 @@
                           >
                             <el-table-column type="expand">
                               <template slot-scope="scope">
-                                <el-tag v-for="(item, index) in scope.row.attr_vals" :key="index" closable @close="handleClose(index,scope.row)" :disable-transitions="false">{{item}}</el-tag>
+                                <el-tag v-for="(item, index) in scope.row.attr_vals" :key="item" closable @close="handleClose(index,scope.row)" :disable-transitions="false">{{item}}</el-tag>
                                 <el-input
                                   class="input-new-tag"
                                   v-if="scope.row.inputVisible"
@@ -52,7 +52,7 @@
                                 >
                                 </el-input>
                                 <el-button v-else class="button-new-tag" size="small" @click="showInput(scope.row)">+ New Tag</el-button>
-                                <el-tag
+                                <!-- <el-tag
                                   :key="tag"
                                   v-for="(tag,index) in dynamicTags"
                                   closable
@@ -70,7 +70,7 @@
                                   @blur="handleInputConfirmdemo"
                                 >
                                 </el-input>
-                                <el-button v-else class="button-new-tag" size="small" @click="showInputdemo">+ New Tag</el-button>
+                                <el-button v-else class="button-new-tag" size="small" @click="showInputdemo">+ New Tag</el-button> -->
                               </template>
                             </el-table-column>
                             <el-table-column type="index">
@@ -170,9 +170,9 @@ export default {
   data () {
     return {
       // demo +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-      dynamicTags: ['标签一', '标签二', '标签三'],
-      inputVisible: false,
-      inputValue: '',
+      // dynamicTags: ['标签一', '标签二', '标签三'],
+      // inputVisible: false,
+      // inputValue: '',
       // demo +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
       cateList: [],
       cateProps: {
@@ -212,25 +212,25 @@ export default {
   },
   methods: {
     // demo----------------------------------------------------------------------
-    handleClosedemo (index) {
-      this.dynamicTags.splice(index, 1)
-    },
-    showInputdemo () {
-      console.log('ok')
-      this.inputVisible = true
-      console.log('ok1')
-      this.$nextTick(_ => {
-        this.$refs.saveTagInput.$refs.input.focus()
-      })
-    },
-    handleInputConfirmdemo () {
-      const inputValue = this.inputValue
-      if (inputValue) {
-        this.dynamicTags.push(inputValue)
-      }
-      this.inputVisible = false
-      this.inputValue = ''
-    },
+    // handleClosedemo (index) {
+    //   this.dynamicTags.splice(index, 1)
+    // },
+    // showInputdemo () {
+    //   console.log('ok')
+    //   this.inputVisible = true
+    //   console.log('ok1')
+    //   this.$nextTick(_ => {
+    //     this.$refs.saveTagInput.$refs.input.focus()
+    //   })
+    // },
+    // handleInputConfirmdemo () {
+    //   const inputValue = this.inputValue
+    //   if (inputValue) {
+    //     this.dynamicTags.push(inputValue)
+    //   }
+    //   this.inputVisible = false
+    //   this.inputValue = ''
+    // },
     // demo--------------------------------------------------------------------------
     async getCateList () {
       const { data: res } = await this.$http.get('categories')
@@ -343,6 +343,7 @@ export default {
     },
     // input
     async handleClose (index, data) {
+      console.log(index, data.attr_vals)
       data.attr_vals.splice(index, 1)
       const { data: res } = await this.$http.put(`categories/${data.cat_id}/attributes/${data.attr_id}`,
         { attr_name: data.attr_name, attr_sel: data.attr_sel, attr_vals: data.attr_vals.join(' ') })

@@ -211,6 +211,7 @@ export default {
         }
         this.getCateList()
         this.$message.success('添加分类成功!')
+        this.addCateDialogVisible = false
       })
       // this.selectedKeys = []
     },

@@ -11,10 +11,11 @@
     <!-- 页面主体区域 -->
     <el-container>
       <!-- 侧边栏 -->
-      <el-aside :width="isCollapse ? '64px' : '200px'">
+      <el-aside :width="isCollapse ? '64px' : '220px'">
           <!-- 侧边菜单栏 -->
         <div class="toggle-button" @click="toggleCollapse">|||</div>
         <el-menu
+          style="padding-left:0 !important;width: 100% !important;"
           background-color="#333744"
           text-color="#fff"
           active-text-color="#409eff"
@@ -128,6 +129,7 @@ i[class^=icon]{
     margin-right: 10px;
 }
 .toggle-button{
+    width: 100%;
     background-color: #4a5064;
     font-size: 10px;
     line-height: 24px;
