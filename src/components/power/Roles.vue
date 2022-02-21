@@ -18,6 +18,7 @@
                 :data="rolelist"
                 border
                 stripe
+                row-key="id"
                 style="width: 100%">
                 <!-- 展开列 -->
                 <el-table-column type="expand">
@@ -256,7 +257,6 @@ export default {
         message: '删除成功!'
       })
       role.children = res.data
-      console.log('ok')
     },
     async showSetRightDialog (role) {
       this.roleId = role.id
@@ -293,7 +293,6 @@ export default {
       this.$message.success('分配权限成功!')
       this.getRolesList()
       this.setRightDialogVisible = false
-      console.log(arr)
     }
   }
 }
