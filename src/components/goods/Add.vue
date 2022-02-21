@@ -249,6 +249,4 @@ export default {
 .btn{
   margin-top: 15px;
 }
-.quill-editor{
-}
 </style>
