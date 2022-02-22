@@ -102,7 +102,6 @@
             :model="addForm"
             :rules="addFormRules"
             ref="addFormRef"
-            label-width="100px"
             >
               <el-form-item label="用户名" prop="username">
                 <el-input v-model="addForm.username"></el-input>
@@ -122,6 +121,7 @@
                 <el-button type="primary" @click="addUser">确 定</el-button>
               </span>
             </el-dialog>
+
             <!-- 修改用户对话框 -->
             <el-dialog
               title="修改用户"
@@ -131,8 +131,7 @@
               >
               <el-form :model="editForm"
               :rules="editFormRules"
-              ref="editFormRef"
-              label-width="70px">
+              ref="editFormRef">
                 <el-form-item label="用户名">
                   <el-input v-model="editForm.username" disabled></el-input>
                 </el-form-item>
@@ -150,6 +149,7 @@
                 <el-button type="primary" @click="editUserInfo">确 定</el-button>
               </span>
             </el-dialog>
+
             <!-- 分配角色对话框 -->
             <el-dialog
               title="分配角色"
